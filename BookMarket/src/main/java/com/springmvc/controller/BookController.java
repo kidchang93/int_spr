@@ -49,7 +49,7 @@ public class BookController {
     public String requestBooksByCategory (@PathVariable("category") String bookCategory,
                                           Model model){
         List<Book> booksByCategory = bookService.getBookListByCategory(bookCategory);
-        model.addAttribute("books" , booksByCategory);
+        model.addAttribute("bookList" , booksByCategory);
         return "books";
     }
 }
