@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller
-@RequestMapping(value="/home") //, method= RequestMethod.GET) // 생략 가능
+//@Controller
+//@RequestMapping(value="/home") //, method= RequestMethod.GET) // 생략 가능
 public class Example02Controller {
 
-    @GetMapping("/exam02/{category}/publisher/{publisher}")
+//    @GetMapping("/exam02/{category}/publisher/{publisher}")
     public String requestMethod(@PathVariable String category ,
                                 @PathVariable String publisher ,
                                 Model model){
