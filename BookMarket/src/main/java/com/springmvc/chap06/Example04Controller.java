@@ -5,8 +5,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.MatrixVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller
-@RequestMapping("/home")
+//@Controller
+//@RequestMapping("/home")
 public class Example04Controller {
 
     @RequestMapping("/exam04/{bookId}/category/{category}")

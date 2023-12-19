@@ -25,4 +25,10 @@ public class BookServiceImpl implements BookService {
 
 
     }
+
+    @Override
+    public Book getBookById(String bookId) {
+        Book bookById = bookRepository.getBookById(bookId);
+        return bookById;
+    }
 }
