@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
-@Controller
-@RequestMapping("/home")
+//@Controller
+//@RequestMapping("/home")
 public class Example03Controller {
 
-  @GetMapping("/exam03/{bookId}")
+//  @GetMapping("/exam03/{bookId}")
   public String requestMethod (@PathVariable String bookId ,
                                @MatrixVariable String category , Model model){
 
