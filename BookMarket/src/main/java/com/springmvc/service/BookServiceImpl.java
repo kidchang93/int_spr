@@ -5,6 +5,7 @@ import com.springmvc.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -15,6 +16,13 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<Book> getAllBookList() {
         return bookRepository.getAllBookList(); // 저장된 도서 목록을 가져옴.
+
+    }
+
+    public List<Book> getBookListByCategory(String category){
+        List<Book> booksByCategory = bookRepository.getBookListByCategory(category);
+        return booksByCategory;
+
 
     }
 }
