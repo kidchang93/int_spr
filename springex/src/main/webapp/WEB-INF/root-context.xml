@@ -35,7 +35,11 @@
    <!--mybatis 세션 팩토리-->
    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
       <property name="dataSource" ref="dataSource"/>
+<<<<<<< HEAD
       <property name="mapperLocations" value="classpath:/mappers/**/*.xml"/>
+=======
+      <property name="mapperLocations" value="classpath:/mappers/TimeMapper2.xml"/>
+>>>>>>> 1b754932901f908cad5876e1390bcace3a5837a3
    </bean>
 
    <context:component-scan base-package="org.zerock.springex.mapper"/>
