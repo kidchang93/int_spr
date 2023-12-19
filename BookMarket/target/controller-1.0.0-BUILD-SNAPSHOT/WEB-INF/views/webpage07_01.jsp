@@ -14,7 +14,7 @@
 <body>
 <h3>회원가입</h3>
   <form:form modelAttribute="member" method="post">
-    <p>아이디 : <form:input path="id" name="id"/></p>
+    <p>아이디 : <form:input path="id" name="id" value="아이디를 입력하세요."/></p>
     <p>비밀번호 : <form:password path="password"/></p>
     <p>거주지 :
       <form:select path="city"></p>
