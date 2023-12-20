@@ -11,9 +11,13 @@
 	
 	
 	<http auto-config="true" use-expressions="true">
+		<!--관리자만 들어올 수 있다.-->
        <intercept-url pattern="/admin/**"  access="hasAuthority('ROLE_ADMIN')" />
+		<!--매니저만 들어올 수 있다.-->
         <intercept-url pattern="/manager/**"  access="hasRole('ROLE_MANAGER')" />
+		<!--승인받은 사람들은 누구든지 들어올 수 있다(로그인한 사람)-->
         <intercept-url pattern="/member/**"  access="isAuthenticated()" />
+		<!--누구든지 들어올 수 있다-->
         <intercept-url pattern="/**"  access="permitAll" /> 
     </http>
     
@@ -21,9 +25,12 @@
     <authentication-manager>
     	<authentication-provider>
         	<user-service>
+				<!--관리자 권한을 부여하다-->
         		<user name="admin"  password="{noop}1234" authorities="ROLE_ADMIN, ROLE_MANAGER, ROLE_USER"/>
+				<!--매니저의 권한은 매니저,유저의 권한을 부여한다-->
         		<user name="manager"  password="{noop}1235" authorities="ROLE_MANAGER , ROLE_USER"/>
-        		   <user name="guest"  password="{noop}1236" authorities="ROLE_USER"/>    
+				<!--고객의 권한은 USER 하나만-->
+				<user name="guest"  password="{noop}1236" authorities="ROLE_USER"/>
         	 </user-service>
     	</authentication-provider>
 	</authentication-manager>
