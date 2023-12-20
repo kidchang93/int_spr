@@ -70,6 +70,7 @@ public class BookRepositoryImpl implements BookRepository {
   @Override
   public Set<Book> getBookListByFilter(Map<String, List<String>> filter) {
 
+      // Set 클래스는 순서 상관없이 중복을 불허한다. ( 집합 )
       Set<Book> booksByPublisher = new HashSet<Book>();
       Set<Book> booksByCategory = new HashSet<Book>();
 
@@ -94,7 +95,7 @@ public class BookRepositoryImpl implements BookRepository {
           booksByCategory.addAll(list);
         }
       }
-
+      // retainAll => 일치하는 값 중에 중복값만 유지하고 나머지는 삭제한다. ( 교집합 )
       booksByCategory.retainAll(booksByPublisher);
       return booksByCategory;
   }
