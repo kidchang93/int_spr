@@ -12,6 +12,6 @@
     </select>
 
     <select id="findAll" resultType="member">
-        select (id, memberEmail, memberPassword, memberName, memberAge, memberMobile) from  member_table
+        select id, memberEmail, memberPassword, memberName, memberAge, memberMobile from  member_table
     </select>
 </mapper>
