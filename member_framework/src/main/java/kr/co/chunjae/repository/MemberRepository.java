@@ -2,14 +2,17 @@ package kr.co.chunjae.repository;
 
 import kr.co.chunjae.dto.MemberDTO;
 import lombok.RequiredArgsConstructor;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository
 @RequiredArgsConstructor
 public class MemberRepository {
 
+    private final SqlSessionTemplate sql;
     public int save(MemberDTO memberDTO) {
         System.out.println("memberDTO = " + memberDTO);
-        return 0;
+
+        return sql.insert("Member.save",memberDTO);
     }
 }
