@@ -18,4 +18,8 @@
     <select id="findById" parameterType="Long" resultType="member">
         select id, memberEmail, memberPassword, memberName, memberAge, memberMobile from  member_table where id = #{id}
     </select>
+
+    <delete id="deleteById" parameterType="Long">
+        delete from member_table where id = #{id}
+    </delete>
 </mapper>

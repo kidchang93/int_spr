@@ -8,7 +8,7 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<!-- 데이터베이스 이름 및 계정 확인 -->
-	<!--&lt;!&ndash;<bean id="dataSource"
+	<bean id="dataSource"
 		  class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="org.mariadb.jdbc.Driver"/>
 		<property name="url" value="jdbc:mariadb://localhost:3306/webdb" />
@@ -16,7 +16,7 @@
 		<property name="password" value="webuser"/>
 	</bean>
 
-	&lt;!&ndash; 파일 모두 생성했는지 확인 &ndash;&gt;
+	<!-- 파일 모두 생성했는지 확인 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
 		<property name="configLocation" value ="classpath:/mybatis-config.xml" />
@@ -25,13 +25,13 @@
 
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
-	</bean>&ndash;&gt;
+	</bean>
 
 	<bean id="transactionManager"
 		  class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
-	<tx:annotation-driven transaction-manager="transactionManager"/>-->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
 
 </beans>
