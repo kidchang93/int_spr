@@ -12,10 +12,10 @@
 	
 	<http use-expressions="true">
 		<intercept-url pattern="/books/add" access="hasAuthority('ADMIN')"/>
-		<intercept-url pattern="/books/add" access="hasAuthority('USER')"/>
+<!--		<intercept-url pattern="/books/add" access="hasAuthority('USER')"/>-->
 
 		<form-login login-page="/login"
-					default-target-url="/mymber"
+					default-target-url="/books/add"
 					username-parameter="username"
 					password-parameter="password"
 					authentication-failure-url="/loginfailed"/>
@@ -38,7 +38,7 @@
     	<authentication-provider>
         	<user-service>
 				<user name="admin" password="{noop}admin1234" authorities="ADMIN"/>
-				<user name="isme" password="{noop}54321" authorities="USER"/>
+<!--				<user name="isme" password="{noop}54321" authorities="USER"/>-->
 
         	 </user-service>
     	</authentication-provider>
