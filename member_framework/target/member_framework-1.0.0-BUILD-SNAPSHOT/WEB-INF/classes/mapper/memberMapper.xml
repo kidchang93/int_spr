@@ -14,4 +14,8 @@
     <select id="findAll" resultType="member">
         select id, memberEmail, memberPassword, memberName, memberAge, memberMobile from  member_table
     </select>
+
+    <select id="findById" parameterType="Long" resultType="member">
+        select id, memberEmail, memberPassword, memberName, memberAge, memberMobile from  member_table where id = #{id}
+    </select>
 </mapper>
