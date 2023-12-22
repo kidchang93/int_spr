@@ -8,5 +8,7 @@
     <a href ="/member/save">회원가입</a><br>
     <a href ="/member/login">로그인</a><br>
     <a href ="/member/">회원목록 조회</a><br>
+    <a href="/student/studentList">학점 관리</a>
+    <a href="/student/saveStudent">학생 등록</a>
 </body>
 </html>

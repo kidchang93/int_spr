@@ -41,4 +41,7 @@ public class MemberRepository {
     public int update(MemberDTO memberDTO) {
         return sql.update("Member.update", memberDTO);
     }
+
+    // 학생 등록 DB 등록
+
 }

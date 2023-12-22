@@ -34,4 +34,6 @@
         set memberAge = #{memberAge}, memberMobile = #{memberMobile}
         where id = #{id}
     </update>
+
+
 </mapper>

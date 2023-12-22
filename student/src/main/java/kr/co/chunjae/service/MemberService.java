@@ -58,4 +58,7 @@ public class MemberService {
             return "no";
         }
     }
+
+
+
 }

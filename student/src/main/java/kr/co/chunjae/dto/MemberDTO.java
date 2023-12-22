@@ -14,4 +14,6 @@ public class MemberDTO {
     private int memberAge;
     private String memberMobile;
 
+
+
 }
