@@ -66,9 +66,24 @@ public class MemberController {
         return "detail";
     }
 
+    // 삭제 화면
     @GetMapping("delete")
     public String delete (@RequestParam("id") Long id){
         memberService.delete(id);
         return "redirect:/member/";
     }
+    // 수정 화면
+
+    @GetMapping("update")
+    public String updateForm (Model model , HttpSession session){
+
+        // 세션에 저장된 이메일 가져오기
+        String loginEmail = (String) session.getAttribute("loginEmail");
+        MemberDTO memberDTO = memberService.findByMemberEmail(loginEmail);
+        model.addAttribute("member",memberDTO);
+
+        return "update";
+    }
+
+
 }
