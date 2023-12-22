@@ -49,15 +49,22 @@
                 <a href="/member?id=${member.id}">조회</a>
             </td>
             <td>
-                <button onclick="deleteMember('${member.id}')">삭제</button>
+                <button onclick="deleteAlert('${member.id}')">삭제</button>
             </td>
         </tr>
     </c:forEach>
 </table>
 </body>
 <script>
+    function deleteAlert() {
+        alert("정말로 삭제하시겠습니까?");
+        confirm()
+        window.location.href = "/"
+    }
+
     const deleteMember = (id) => {
         console.log(id);
+        // alert 필요 " 정말로 삭제할거임? " 이란 문구로 확인시 where 취소시 where 짜줘야함.
         location.href = "/member/delete?id="+id;
     }
 </script>

@@ -65,4 +65,10 @@ public class MemberController {
         model.addAttribute("member",memberDTO);
         return "detail";
     }
+
+    @GetMapping("delete")
+    public String delete (@RequestParam("id") Long id){
+        memberService.delete(id);
+        return "redirect:/member/";
+    }
 }
