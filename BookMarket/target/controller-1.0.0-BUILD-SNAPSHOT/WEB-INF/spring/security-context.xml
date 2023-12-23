@@ -22,15 +22,6 @@
 		<csrf/>
 		<logout logout-url="/logout"
 				logout-success-url="/logout"/>
-		<!--<form-login login-page="/login"
-					login-processing-url="/login"
-					default-target-url="/admin"
-					username-parameter="username"
-					password-parameter="password"
-					authentication-failure-url="/user/loginform?error=true"/>
-		<csrf/>
-		<logout logout-url="/logout"
-				logout-success-url="/logout"/>-->
     </http>
     
     
