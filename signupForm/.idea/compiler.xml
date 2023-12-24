@@ -7,6 +7,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="signupForm" />
         <module name="member_framework" />
         <module name="student" />
       </profile>
@@ -15,6 +16,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="member_framework" options="-Xlint:all" />
+      <module name="signupForm" options="-Xlint:all" />
       <module name="student" options="-Xlint:all" />
     </option>
   </component>

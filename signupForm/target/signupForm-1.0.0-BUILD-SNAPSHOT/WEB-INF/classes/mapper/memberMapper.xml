@@ -3,10 +3,12 @@
                 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Member">
     <insert id="save" parameterType="member">
-        insert into member_table(memberEmail, memberPassword, memberName, memberAge, memberMobile)
-        values (#{memberEmail}, #{memberPassword}, #{memberName}, #{memberAge}, #{memberMobile})
+        insert into members (memberId,memberPassword,memberName,memberNickname,memberGender,memberRegdate,memberEmail,memberPhonenumber,
+                             memberDivision,memberGrade,memberSchool,memberSigugun,memberInterest)
+        values (#{memberId},#{memberPassword},#{memberName},#{memberNickname},#{memberGender},#{memberRegdate},#{memberEmail},#{memberPhonenumber},
+                #{memberDivision},#{memberGrade},#{memberSchool},#{memberSigugun},#{memberInterest})
     </insert>
-
+<!--
     <select id="login" parameterType="member" resultType="member">
         select * from member_table where memberEmail = #{memberEmail} and memberPassword = #{memberPassword}
     </select>
@@ -33,7 +35,7 @@
         update member_table
         set memberAge = #{memberAge}, memberMobile = #{memberMobile}
         where id = #{id}
-    </update>
+    </update>-->
 
 
 </mapper>
