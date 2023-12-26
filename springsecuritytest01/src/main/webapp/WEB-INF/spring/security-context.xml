@@ -10,7 +10,8 @@
 	<!--빈등록-->
 	<bean id="customAccessDenied" class="kr.co.chunjae.security.CustomAccessDeniedHandler"/>
 	<bean id="customLoginSuccess" class="kr.co.chunjae.security.CustomLoginSuccessHandler"/>
-
+	<!--<bean id="customPasswordEncoder" class="kr.co.chunjae.security.CustomNoOpPasswordEncoder"/>-->
+	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
 	<security:http>
 		<!--<security:form-login/>-->
 
@@ -39,6 +40,8 @@
 		<security:authentication-provider>
 
 			<security:jdbc-user-service data-source-ref="dataSource"/>
+			<!--<security:password-encoder ref="customPasswordEncoder"/>-->
+			<security:password-encoder ref="bcryptPasswordEncoder"/>
 
 		</security:authentication-provider>
 	</security:authentication-manager>
