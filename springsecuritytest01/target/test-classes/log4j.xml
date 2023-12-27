@@ -9,21 +9,21 @@
 			<param name="ConversionPattern" value="%-5p: %c - %m%n" />
 		</layout>
 	</appender>
-	
+
 	<!-- Application Loggers -->
 	<logger name="kr.co.chunjae">
 		<level value="info" />
 	</logger>
-	
+
 	<!-- 3rdparty Loggers -->
 	<logger name="org.springframework.core">
 		<level value="info" />
-	</logger>	
-	
+	</logger>
+
 	<logger name="org.springframework.beans">
 		<level value="info" />
 	</logger>
-	
+
 	<logger name="org.springframework.context">
 		<level value="info" />
 	</logger>
@@ -31,11 +31,35 @@
 	<logger name="org.springframework.web">
 		<level value="info" />
 	</logger>
+	<!-- SQL 로그 출력을 위한 문장 start -->
+	<logger name="jdbc.sqlonly" additivity="false">
+		<level value="info"/>
+		<appender-ref ref="console"/>
+	</logger>
+	<logger name="jdbc.sqltiming" additivity="false">
+		<level value="warn" />
+		<appender-ref ref="console"/>
+	</logger>
+	<logger name="jdbc.audit" additivity="false">
+		<level value="warn"/>
+		<appender-ref ref="console"/>
+	</logger>
+
+	<logger name="jdbc.resultset" additivity="false">
+		<level value="warn" />
+		<appender-ref ref="console"/>
+	</logger>
+
+	<logger name="jdbc.resultsettable" additivity="false">
+		<level value="info"/>
+		<appender-ref ref="console"/>
+	</logger>
+	<!-- SQL start -->
 
 	<!-- Root Logger -->
 	<root>
-		<priority value="info" />
+		<priority value="warn" />
 		<appender-ref ref="console" />
 	</root>
-	
+
 </log4j:configuration>

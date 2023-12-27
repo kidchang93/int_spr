@@ -12,6 +12,7 @@
 	<bean id="customLoginSuccess" class="kr.co.chunjae.security.CustomLoginSuccessHandler"/>
 	<!--<bean id="customPasswordEncoder" class="kr.co.chunjae.security.CustomNoOpPasswordEncoder"/>-->
 	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+	<bean id="customUserDetailsService" class="kr.co.chunjae.security.CustomUserDetailsService"></bean>
 	<security:http>
 		<!--<security:form-login/>-->
 
@@ -37,13 +38,14 @@
 	</security:http>
 	<!--DB 저장할 때 권한이 3개라면 DB에 3개를 다 넣어야함.-->
 	<security:authentication-manager>
-		<security:authentication-provider>
+		<security:authentication-provider user-service-ref="customUserDetailsService">
 			<!--데이터베이스 소스 테스트도 다 했고 인서트도 넣었으니 이제 쿼리문 넣고 로그인하면 해당 쿼리를 실행하면서 확인한다.-->
-			<security:jdbc-user-service data-source-ref="dataSource"
+
+			<!--<security:jdbc-user-service data-source-ref="dataSource"
 										users-by-username-query
 												="select userid , userpw , enabled from tbl_member where userid = ?"
 										authorities-by-username-query
-												="select userid , auth from tbl_member_auth where userid = ?"/>
+												="select userid , auth from tbl_member_auth where userid = ?"/>-->
 			<!--<security:password-encoder ref="customPasswordEncoder"/>-->
 			<security:password-encoder ref="bcryptPasswordEncoder"/>
 

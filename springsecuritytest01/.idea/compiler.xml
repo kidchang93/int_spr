@@ -10,9 +10,13 @@
         <module name="springsecuritytest01" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="spring-security-test2" target="11" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="spring-security-test2" options="-Xlint:all" />
       <module name="springsecuritytest01" options="-Xlint:all" />
     </option>
   </component>
