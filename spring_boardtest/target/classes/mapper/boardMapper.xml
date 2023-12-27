@@ -38,8 +38,5 @@
         select count(id) from board_table
     </select>
 
-    <select id="getNow" resultType="String">
-        select now()
-    </select>
 
 </mapper>
