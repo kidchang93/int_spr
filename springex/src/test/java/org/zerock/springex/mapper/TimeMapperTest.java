@@ -7,26 +7,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-
 @Log4j2
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(locations = "file:src/main/webapp/WEB-INF/root-context.xml")
-public class TimeMapperTests {
+public class TimeMapperTest {
 
-  @Autowired(required = false)
-  private TimeMapper2 timeMapper2;
+    @Autowired(required = false)
+    private TimeMapper timeMapper;
 
-  @Autowired(required = false)
-  private TimeMapper timeMapper;
+    @Test
+    public void testGetTime(){
+        log.info(timeMapper.getTime());
+    }
 
-  @Test
-  public void testNow() {
-    log.info(timeMapper2.getNow());
-  }
+    @Autowired(required = false)
+    private TimeMapper2 timeMapper2;
 
-  @Test
-  public void testGetTime(){
-    log.info(timeMapper.getTime());
-  }
-
+    @Test
+    public void testNow(){
+        log.info(timeMapper2.getNow());
+    }
 }
