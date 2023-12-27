@@ -6,7 +6,7 @@
 <mapper namespace="kr.co.chunjae.mapper.MemberMapper">
 
 
-    <!--<resultMap type="kr.co.chunjae.domain.MemberVO" id="memberMap">
+    <resultMap type="kr.co.chunjae.domain.MemberVO" id="memberMap">
         <id property="userid" column="userid"/>
         <result property="userid" column="userid"/>
         <result property="userpw" column="userpw"/>
@@ -28,5 +28,5 @@
         FROM
             tbl_member mem LEFT OUTER JOIN tbl_member_auth auth on mem.userid = auth.userid
         WHERE mem.userid = #{userid}
-    </select>-->
+    </select>
 </mapper>
