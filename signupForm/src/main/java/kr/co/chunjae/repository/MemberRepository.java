@@ -12,10 +12,10 @@ import java.util.List;
 public class MemberRepository {
 
     private final SqlSessionTemplate sql;
-    public int save(MemberDTO memberDTO) {
+    public void save(MemberDTO memberDTO) {
         System.out.println("memberDTO = " + memberDTO);
 
-        return sql.insert("Member.save",memberDTO);
+        sql.insert("Member.save",memberDTO);
     }
 
 

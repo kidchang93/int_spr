@@ -12,8 +12,8 @@ import java.util.List;
 public class MemberService {
     private final MemberRepository memberRepository;
 
-    public int save(MemberDTO memberDTO) {
-        return memberRepository.save(memberDTO);
+    public void save(MemberDTO memberDTO) {
+        memberRepository.save(memberDTO);
     }
 
 
