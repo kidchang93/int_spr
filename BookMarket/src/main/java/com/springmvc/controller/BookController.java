@@ -1,6 +1,7 @@
 package com.springmvc.controller;
 
 import com.springmvc.domain.Book;
+import com.springmvc.exception.BookIdException;
 import com.springmvc.exception.CategoryException;
 import com.springmvc.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.util.List;
 import java.util.Map;
@@ -109,6 +111,20 @@ public class BookController {
     public void initBinder(WebDataBinder binder){
         binder.setAllowedFields("bookId","name","unitPrice","author","description","publisher",
                                 "category", "unitInStock","totalPages","releaseDate","condition","bookImage");
+    }
+
+    // 예외처리 컨트롤러
+    @ExceptionHandler(value = {BookIdException.class})
+    public ModelAndView handleError(HttpServletRequest req , BookIdException exception){
+
+        ModelAndView mav = new ModelAndView(); // 인스턴스 생성
+
+        mav.addObject("invalidBookId",exception.getBookId()); // 모델 속성 invalidBookId 에서 요청한 도서 아이디값을 저장한다.
+        mav.addObject("exception",exception); // 모델 속성 exception에서 예외처리 클래스 BookIdException 을 저장한다.
+        mav.addObject("url", req.getRequestURL() + "?" + req.getQueryString()); // 모델 속성 url에서 요청 url과 요청 쿼리문을 저장한다.
+        mav.setViewName("errorBook"); // 뷰 이름으로 errorBook 을 설정하여 errorBook.jsp 파일을 출력한다.
+        return mav; // mav 인스턴스 반환
+
     }
 }
 
