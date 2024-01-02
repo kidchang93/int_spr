@@ -79,7 +79,7 @@ public class BoardController {
     boardService.update(boardDTO);
     BoardDTO dto = boardService.findById(boardDTO.getId());
     model.addAttribute("board",dto);
-    return "detail"; // 이렇게되면 수정하면 조회수가 증가하지 않는다.
+    return "detail"; // 이렇게되고 수정하면 조회수가 증가하지 않는다.
   }
 
   // 게시물 페이징 기능
