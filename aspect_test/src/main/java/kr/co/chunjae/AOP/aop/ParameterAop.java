@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class ParameterAop {
     @Pointcut("execution(* kr.co.chunjae.AOP..*.*(..))")
-
     private void cut() {
 
     }
