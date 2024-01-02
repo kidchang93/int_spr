@@ -12,7 +12,7 @@
 	<bean id="customLoginSuccess" class="kr.co.chunjae.security.CustomLoginSuccessHandler"/>
 	<!--<bean id="customPasswordEncoder" class="kr.co.chunjae.security.CustomNoOpPasswordEncoder"/>-->
 	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
-	<bean id="customUserDetailsService" class="kr.co.chunjae.security.CustomUserDetailsService"></bean>
+	<bean id="customUserDetailsService" class="kr.co.chunjae.security.CustomUserDetailsService"/>
 	<security:http>
 		<!--<security:form-login/>-->
 

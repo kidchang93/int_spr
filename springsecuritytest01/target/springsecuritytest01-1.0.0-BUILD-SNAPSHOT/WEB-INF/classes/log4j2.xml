@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration status="INFO">
+	<Properties>
+		<Property name="logNm">Spring Log4j2</Property>
+		<Property name="layoutPattern">%style{%d{yyyy/MM/dd HH:mm:ss,SSS}}{cyan} %highlight{[%-5p]}{FATAL=bg_red, ERROR=red,
+			INFO=green, DEBUG=blue}  [%C] %style{[%t]}{yellow} %m%n</Property>
+	</Properties>
+	<Appenders>
+		<!--콘솔-->
+		<Console name="console" target="SYSTEM_OUT">
+			<PatternLayout charset="UTF-8" pattern ="%d{hh:mm:ss} %5p: [%c] %m%n" />
+		</Console>
+	</Appenders>
+<loggers>
+	<!-- Application Loggers -->
+	<logger name="kr.co.chunjae.*" level="INFO" additivity="false">
+		<AppenderRef ref="console" />
+	</logger>
+
+	<!-- 3rdparty Loggers -->
+	<logger name="org.springframework" level="INFO" additivity="false">
+		<AppenderRef ref="console" />
+	</logger>
+
+	<!-- SQL 로그 출력을 위한 문장 start -->
+	<logger name="jdbc.sqlonly" additivity="false">
+		<level value="info"/>
+		<appender-ref ref="console"/>
+	</logger>
+	<logger name="jdbc.sqltiming" additivity="false">
+		<level value="info" />
+		<appender-ref ref="console"/>
+	</logger>
+	<logger name="jdbc.audit" additivity="false">
+		<level value="info"/>
+		<appender-ref ref="console"/>
+	</logger>
+
+	<logger name="jdbc.resultset" additivity="false">
+		<level value="info" />
+		<appender-ref ref="console"/>
+	</logger>
+
+	<logger name="jdbc.resultsettable" additivity="false">
+		<level value="info"/>
+		<appender-ref ref="console"/>
+	</logger>
+	<!-- SQL end -->
+</loggers>
+	<!-- Root Logger -->
+	<root level="INFO" additivity="false">
+		<AppenderRef ref="console" />
+	</root>
+
+</configuration>
