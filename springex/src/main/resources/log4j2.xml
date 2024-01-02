@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <configuration status="INFO">
-
+    <Properties>
+        <Property name="logNm">Spring Log4j2</Property>
+        <Property name="layoutPattern">%style{%d{yyyy/MM/dd HH:mm:ss,SSS}}{cyan} %highlight{[%-5p]}{FATAL=bg_red, ERROR=red,
+            INFO=green, DEBUG=blue}  [%C] %style{[%t]}{yellow} %m%n</Property>
+    </Properties>
     <Appenders>
         <!--콘솔-->
         <Console name="console" target="SYSTEM_OUT">

@@ -1,6 +1,7 @@
 package kr.co.chunjae.security;
 
-import lombok.extern.log4j.Log4j;
+
+import lombok.extern.log4j.Log4j2;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
@@ -11,7 +12,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Log4j
+@Log4j2
 public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 
   /*아이디의 권한에 따라 이동하는 페이지가 다르게 표시된다.*/

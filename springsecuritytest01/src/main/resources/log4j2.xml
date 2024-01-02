@@ -12,9 +12,9 @@
 			<PatternLayout charset="UTF-8" pattern ="%d{hh:mm:ss} %5p: [%c] %m%n" />
 		</Console>
 	</Appenders>
-
+<loggers>
 	<!-- Application Loggers -->
-	<logger name="kr.co.chunjae" level="INFO" additivity="false">
+	<logger name="kr.co.chunjae.*" level="INFO" additivity="false">
 		<AppenderRef ref="console" />
 	</logger>
 
@@ -29,16 +29,16 @@
 		<appender-ref ref="console"/>
 	</logger>
 	<logger name="jdbc.sqltiming" additivity="false">
-		<level value="warn" />
+		<level value="info" />
 		<appender-ref ref="console"/>
 	</logger>
 	<logger name="jdbc.audit" additivity="false">
-		<level value="warn"/>
+		<level value="info"/>
 		<appender-ref ref="console"/>
 	</logger>
 
 	<logger name="jdbc.resultset" additivity="false">
-		<level value="warn" />
+		<level value="info" />
 		<appender-ref ref="console"/>
 	</logger>
 
@@ -47,7 +47,7 @@
 		<appender-ref ref="console"/>
 	</logger>
 	<!-- SQL end -->
-
+</loggers>
 	<!-- Root Logger -->
 	<root level="INFO" additivity="false">
 		<AppenderRef ref="console" />
