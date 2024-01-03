@@ -3,7 +3,6 @@ package kr.co.chunjae.controller;
 import kr.co.chunjae.domain.AttachFileDTO;
 import lombok.extern.log4j.Log4j;
 import net.coobird.thumbnailator.Thumbnailator;
-import org.checkerframework.checker.units.qual.A;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
