@@ -81,8 +81,8 @@
 
 
 		$(document).ready(function (){	// 바로 실행하는 메서드
-			var regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$");
-			var maxSize = 5242880; //5MB
+			var regex = new RegExp("(.*?)\.(exe|sh|zip|alz|txt)$");	// 파일 형식을 제한하는 인스턴스생성
+			var maxSize = 5242880; //5MB 로 제한한다.
 
 			function checkExtension(fileName, fileSize) {
 
@@ -101,17 +101,17 @@
 			var cloneObj  = $(".uploadDiv").clone();
 
 			$("#uploadBtn").on("click", function (e){ // id 동일한 태그의 click을 하면 실행하는 메서드
-				let formData = new FormData();
+				let formData = new FormData();	// 인스턴스생성
 
-				let inputFile = $("input[name='uploadFile']");
+				let inputFile = $("input[name='uploadFile']");	//변수 선언
 
-				let files = inputFile[0].files;
+				let files = inputFile[0].files;		// 변수 선언
 
 				console.log(files);
 
 				/* add fileData to formData */
 				for(let i = 0; i< files.length; i++){
-					if(!checkExtension(files[i].name, files[i].sign)){
+					if(!checkExtension(files[i].name, files[i].size)){
 						return false;
 					}
 

@@ -1,11 +1,19 @@
 package kr.co.chunjae.controller;
 
+import kr.co.chunjae.domain.AttachFileDTO;
 import lombok.extern.log4j.Log4j;
 import net.coobird.thumbnailator.Thumbnailator;
+import org.checkerframework.checker.units.qual.A;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -13,7 +21,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Controller
@@ -61,18 +71,19 @@ public class UploadController {
     return str.replace("_", File.separator);  // _로 구분해주는 함수로 변환
   }
 
-  @PostMapping("uploadAjaxAction")
-  public void uploadAjaxPost(MultipartFile[] uploadFile , Model model){
+  @PostMapping(value = "uploadAjaxAction" , produces = MediaType.APPLICATION_JSON_VALUE)
+  @ResponseBody
+  public ResponseEntity<List<AttachFileDTO>> uploadAjaxPost(MultipartFile[] uploadFile){
 
+    List<AttachFileDTO> list = new ArrayList<>();
     log.info("update ajax post ======================");
     String uploadFolder = "E:\\upload\\temp";
-
+    String uploadFolderPath = getFolder();
 
     // folder 만들기
+
     File uploadPath = new File(uploadFolder , getFolder());
     log.info("upload Path : " + uploadPath);
-
-
 
     if (uploadPath.exists() == false){
       uploadPath.mkdirs();
@@ -83,15 +94,20 @@ public class UploadController {
     // for 문을 돌면서 saveFile이라는 변수에 uploadFileName을 통해 초기화시킨다.
     for (MultipartFile multipartFile : uploadFile){
 
+
       log.info("-------------------------------------");
       log.info("upload file name : " + multipartFile.getOriginalFilename());
       log.info("upload file size : " + multipartFile.getSize());
 
+
+      AttachFileDTO attachDTO = new AttachFileDTO();
       String uploadFileName = multipartFile.getOriginalFilename();
 
       uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("\\") + 1);
       log.info("only file name : "+uploadFileName);
+      attachDTO.setFileName(uploadFileName);
       //  난수를 이용해 파일 이름을 저장한다.
+
       UUID uuid = UUID.randomUUID();
 
       uploadFileName = uuid.toString() + "_" + uploadFileName;
@@ -101,17 +117,25 @@ public class UploadController {
       try{
         File saveFile = new File(uploadPath , uploadFileName);
         multipartFile.transferTo(saveFile); // 예외가 발생하지않으면 파일 저장한다.
+
+        attachDTO.setUuid(uuid.toString());
+        attachDTO.setUploadPath(uploadFolderPath);
         // 이미지 타입 파일 체크
         if (checkImageType(saveFile)){
+          attachDTO.setImage(true);
+
           FileOutputStream thumbnail = new FileOutputStream(new File(uploadPath, "s_" + uploadFileName));
           Thumbnailator.createThumbnail(multipartFile.getInputStream(), thumbnail, 100 , 100);
 
           thumbnail.close();
         }
+        // add to list
+        list.add(attachDTO);
       }catch(Exception e){
         log.error(e.getMessage());
       } // end catch
     } // end for
+    return new ResponseEntity<>(list, HttpStatus.OK);
   } // end post
 
   private boolean checkImageType(File file){
@@ -126,6 +150,33 @@ public class UploadController {
     }
     return false;
   }
+
+  @GetMapping("/display")
+  @ResponseBody
+  public ResponseEntity<byte[]> getFile(String fileName){
+
+    log.info("fileName : " + fileName);
+
+    File file = new File("E:\\upload\\temp\\" + fileName);
+
+    log.info("file : " + file);
+    ResponseEntity<byte[]> result = null;
+
+    try {
+      HttpHeaders header = new HttpHeaders();
+
+      header.add("Content-Type",Files.probeContentType(file.toPath()));
+      result = new ResponseEntity<>(FileCopyUtils.copyToByteArray(file),header , HttpStatus.OK);
+    } catch (IOException e){
+      // Todo Auto-generated catch block
+      e.printStackTrace();
+    }
+    return result;
+
+
+  }
+
+
 
 }
 
