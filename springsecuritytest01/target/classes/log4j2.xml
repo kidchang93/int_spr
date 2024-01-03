@@ -1,56 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<configuration status="INFO">
+<configuration status="Info">
 	<Properties>
-		<Property name="logNm">Spring Log4j2</Property>
-		<Property name="layoutPattern">%style{%d{yyyy/MM/dd HH:mm:ss,SSS}}{cyan} %highlight{[%-5p]}{FATAL=bg_red, ERROR=red,
-			INFO=green, DEBUG=blue}  [%C] %style{[%t]}{yellow} %m%n</Property>
+		<!--HH:mm:ss.SSS-->
+		<Property name="LOG_PATTERN">%style{%d{HH:mm:ss}}{cyan} %highlight{[%-5p]}{FATAL=red, ERROR=magenta, WARN=yellow, INFO=green, DEBUG=blue} - [%t] %style{class:}{yellow} %-20c{3} %style{=>}{yellow} %style{method:}{yellow} %M(line: %L) %style{>>}{yellow} %m%n%ex</Property>
 	</Properties>
+
+	<!-- Appenders -->
 	<Appenders>
-		<!--콘솔-->
 		<Console name="console" target="SYSTEM_OUT">
-			<PatternLayout charset="UTF-8" pattern ="%d{hh:mm:ss} %5p: [%c] %m%n" />
+			<PatternLayout pattern="${LOG_PATTERN}"  disableAnsi="false"/>
 		</Console>
 	</Appenders>
-<loggers>
-	<!-- Application Loggers -->
-	<logger name="kr.co.chunjae.*" level="INFO" additivity="false">
-		<AppenderRef ref="console" />
-	</logger>
 
-	<!-- 3rdparty Loggers -->
-	<logger name="org.springframework" level="INFO" additivity="false">
-		<AppenderRef ref="console" />
-	</logger>
+	<!-- Loggers -->
+	<Loggers>
 
-	<!-- SQL 로그 출력을 위한 문장 start -->
-	<logger name="jdbc.sqlonly" additivity="false">
-		<level value="info"/>
-		<appender-ref ref="console"/>
-	</logger>
-	<logger name="jdbc.sqltiming" additivity="false">
-		<level value="info" />
-		<appender-ref ref="console"/>
-	</logger>
-	<logger name="jdbc.audit" additivity="false">
-		<level value="info"/>
-		<appender-ref ref="console"/>
-	</logger>
+		<!--MyBatis Log-->
+		<Logger name="jdbc.audit" level="WARN" additivity="false">
+			<AppenderRef ref="console"/>
+		</Logger>
+		<Logger name="jdbc.connection" level="WARN" additivity="false">
+			<AppenderRef ref="console"/>
+		</Logger>
+		<Logger name="jdbc.resultset" level="WARN" additivity="false">
+			<AppenderRef ref="console"/>
+		</Logger>
+		<Logger name="jdbc.resultsettable" level="INFO" additivity="false">
+			<AppenderRef ref="console"/>
+		</Logger>
+		<Logger name="jdbc.sqlonly" level="WARN" additivity="false">
+			<AppenderRef ref="console"/>
+		</Logger>
+		<Logger name="jdbc.sqltiming" level="INFO" additivity="false">
+			<AppenderRef ref="console"/>
+		</Logger>
 
-	<logger name="jdbc.resultset" additivity="false">
-		<level value="info" />
-		<appender-ref ref="console"/>
-	</logger>
+		<!-- 3rdparty Log -->
+		<Logger name="org.springframework" level="INFO" additivity="false">
+			<AppenderRef ref="console"/>
+		</Logger>
 
-	<logger name="jdbc.resultsettable" additivity="false">
-		<level value="info"/>
-		<appender-ref ref="console"/>
-	</logger>
-	<!-- SQL end -->
-</loggers>
-	<!-- Root Logger -->
-	<root level="INFO" additivity="false">
-		<AppenderRef ref="console" />
-	</root>
+		<!-- Application Log -->
+		<Logger name="kr.co" level="INFO" additivity="false">
+			<AppenderRef ref="console"/>
+		</Logger>
 
+		<!-- Root Logger -->
+		<root level="INFO" additivity="false">
+			<AppenderRef ref="console"/>
+		</root>
+
+	</Loggers>
 </configuration>
