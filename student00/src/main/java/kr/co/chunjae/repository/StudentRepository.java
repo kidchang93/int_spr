@@ -21,4 +21,20 @@ public class StudentRepository {
   public List<StudentDTO> findAll() {
     return sql.selectList("Student.findAll");
   }
+
+  public Boolean findByMemId(StudentDTO studentDTO) {
+    return sql.selectOne("Student.findByMemId" , studentDTO);
+  }
+
+  public int update(StudentDTO studentDTO) {
+    return sql.update("Student.update" , studentDTO);
+  }
+
+  public StudentDTO findByStudentId(String studentId) {
+    return sql.selectOne("Student.findByStudentId",studentId);
+  }
+
+  public void delete(String studentId) {
+    sql.delete("Student.delete",studentId);
+  }
 }

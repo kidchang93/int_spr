@@ -20,7 +20,7 @@
   </tr>
   <c:forEach items="${studentList}" var="student">
   <tr>
-    <td>${student.studentId}</td>
+    <td><a href="/student/update?studentId=${student.studentId}">${student.studentId}</a></td>
     <td>${student.studentName}</td>
   </tr>
   </c:forEach>
@@ -28,6 +28,6 @@
 <br>
 <a href="/student/login">로그인</a>
 <a href="/student/save">학생등록</a>
-<a href="/student/#">점수정정</a>
+<a href="/student/update">점수정정</a>
 </body>
 </html>

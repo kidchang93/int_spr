@@ -12,6 +12,8 @@ import lombok.ToString;
 public class StudentDTO {
   private String studentId;
   private String studentName;
+  private String memberId;
+  private String memberPassword;
   private int korean;
   private int english;
   private int math;

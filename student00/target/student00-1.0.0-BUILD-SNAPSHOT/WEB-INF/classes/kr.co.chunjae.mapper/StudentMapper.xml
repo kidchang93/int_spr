@@ -4,11 +4,31 @@
 
 <mapper namespace="Student">
     <insert id="save" parameterType="student">
-        insert into student(studentId, studentName, korean, english, math)
+        insert into student(studentId, studentName,korean, english, math)
         values(#{studentId}, #{studentName}, #{korean}, #{english}, #{math})
     </insert>
 
     <select id="findAll" resultType="student">
         select * from student
     </select>
+
+    <select id="findByMemId" parameterType="student" resultType="boolean">
+        select * from student where memberId = #{memberId}
+    </select>
+
+    <update id="update" parameterType="student">
+        update student
+        set korean = #{korean} , english = #{english} , math = #{math}
+        where studentId = #{studentId}
+    </update>
+
+    <select id="findByStudentId" parameterType="String" resultType="student">
+        select * from student where studentId = #{studentId}
+    </select>
+
+    <delete id="delete" parameterType="student">
+        delete
+        from student
+        where studentId = #{studentId}
+    </delete>
 </mapper>

@@ -21,4 +21,31 @@ public class StudentService{
   public List<StudentDTO> findAll() {
     return studentRepository.findAll();
   }
+
+  public Boolean findByMemId(StudentDTO studentDTO) {
+    Boolean result = studentRepository.findByMemId(studentDTO);
+    if (result) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public boolean update(StudentDTO studentDTO) {
+    int result = studentRepository.update(studentDTO);
+    if (result > 0){
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public StudentDTO findByStudentId(String studentId) {
+    return studentRepository.findByStudentId(studentId);
+  }
+
+  public void delete(String studentId) {
+    studentRepository.delete(studentId);
+
+  }
 }
