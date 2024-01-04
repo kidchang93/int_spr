@@ -17,15 +17,15 @@
 
     <security:http auto-config="true" use-expressions="true">
 
-        <!-- <security:csrf disabled="true"/> -->
+         <!--<security:csrf disabled="true"/>
 
-        <!--<security:intercept-url pattern="/sample/add"  access="permitAll"/>
-        <security:intercept-url pattern="/sample/member"  access="hasRole('ROLE_MEMBER')"/>
-        <security:intercept-url pattern="/sample/admin"  access="hasRole('ROLE_ADMIN')"/>
+        <security:intercept-url pattern="/student/loginForm"  access="permitAll"/>
+        <security:intercept-url pattern="/student/studentList"  access="hasRole('ROLE_MEMBER')"/>
+        <security:intercept-url pattern="/student/save"  access="hasRole('ROLE_MEMBER')"/>
 
-        <security:access-denied-handler ref="customaccessDenied" />
+        <security:access-denied-handler ref="customAccessDenied" />
 
-        <security:form-login login-page="/customLogin" />
+        <security:form-login login-page="/student/loginForm" />
 
         <security:logout logout-url="/customLogout" invalidate-session="true"
                          delete-cookies="remember-me, JSESSIONID"/>
@@ -35,7 +35,8 @@
     </security:http>
 
     <security:authentication-manager>
-       <!-- <security:authentication-provider user-service-ref="customUserDetailsService">
+        <!--<security:authentication-provider user-service-ref="customUserDetailsService">
+
 
             <security:password-encoder
                     ref = "bcryptPasswordEncoder" />
