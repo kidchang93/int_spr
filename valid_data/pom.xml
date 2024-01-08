@@ -3,8 +3,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>kr.co</groupId>
-	<artifactId>chunjae</artifactId>
-	<name>test000</name>
+	<artifactId>valid_data</artifactId>
+	<name>valid_data</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
@@ -205,7 +205,14 @@
 			<artifactId>mybatis-spring</artifactId>
 			<version>2.0.7</version>
 		</dependency>
-		<!--유효성 validation 라이브러리-->
+
+		<!--MyBatis Table Log-->
+		<!-- https://mvnrepository.com/artifact/org.bgee.log4jdbc-log4j2/log4jdbc-log4j2-jdbc4.1 -->
+		<dependency>
+			<groupId>org.bgee.log4jdbc-log4j2</groupId>
+			<artifactId>log4jdbc-log4j2-jdbc4.1</artifactId>
+			<version>1.16</version>
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/jakarta.validation/jakarta.validation-api -->
 		<dependency>
 			<groupId>jakarta.validation</groupId>
@@ -219,13 +226,6 @@
 			<version>6.1.5.Final</version>
 		</dependency>
 
-		<!--MyBatis Table Log-->
-		<!-- https://mvnrepository.com/artifact/org.bgee.log4jdbc-log4j2/log4jdbc-log4j2-jdbc4.1 -->
-		<dependency>
-			<groupId>org.bgee.log4jdbc-log4j2</groupId>
-			<artifactId>log4jdbc-log4j2-jdbc4.1</artifactId>
-			<version>1.16</version>
-		</dependency>
 	</dependencies>
     <build>
         <plugins>
