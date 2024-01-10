@@ -11,7 +11,28 @@
 			<PatternLayout pattern="${LOG_PATTERN}"  disableAnsi="false"/>
 		</Console>
 	</Appenders>
+	<!-- 날짜별 로그 파일 생성 -->
+	<appender name="rollingFile"
+			  class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="E:/project_logs/log.log" />
+		<param name="Append" value="true" /> <!-- param name="MaxFileSize" value="100MB"/ --> <!-- param name="MaxBackupIndex" value="2"></param -->
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %p [%C{10}] %m %n" />
+		</layout>
+	</appender>
 
+	<!-- 날짜별 로그 파일 생성(에러만) -->
+	<appender name="errFile"
+			  class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="Threshold" value="ERROR" />
+		<param name="File" value="D:/project_logs/errorLog.log" />
+		<param name="Append" value="true" /> <!-- param name="MaxFileSize" value="100MB"/ --> <!-- param name="MaxBackupIndex" value="2"></param -->
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %5p [%C{1}] %m %n" />
+		</layout>
+	</appender>
 	<!-- Loggers -->
 	<Loggers>
 
@@ -48,6 +69,8 @@
 		<!-- Root Logger -->
 		<root level="INFO" additivity="false">
 			<AppenderRef ref="console"/>
+			<appender-ref ref="rollingFile" />
+			<appender-ref ref="errFile" />
 		</root>
 
 	</Loggers>
