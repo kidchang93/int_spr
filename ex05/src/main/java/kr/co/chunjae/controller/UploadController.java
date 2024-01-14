@@ -76,7 +76,7 @@ public class UploadController {
 
     List<AttachFileDTO> list = new ArrayList<>();
     log.info("update ajax post ======================");
-    String uploadFolder = "E:\\upload\\temp";
+    String uploadFolder = "D:\\upload\\temp";
     String uploadFolderPath = getFolder();
 
     // folder 만들기
@@ -156,7 +156,7 @@ public class UploadController {
 
     log.info("fileName : " + fileName);
 
-    File file = new File("E:\\upload\\temp\\" + fileName);
+    File file = new File("D:\\upload\\temp\\" + fileName);
 
     log.info("file : " + file);
     ResponseEntity<byte[]> result = null;
