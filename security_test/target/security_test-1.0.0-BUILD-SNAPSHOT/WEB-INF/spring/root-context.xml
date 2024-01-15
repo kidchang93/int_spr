@@ -9,7 +9,7 @@
 
 	<!-- Root Context: defines shared resources visible to all other web components -->
 
-<!--	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 
 		<property name="driverClassName"
 				  value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"/>
@@ -20,28 +20,24 @@
 
 	</bean>
 
-	&lt;!&ndash; HikariCP configuration &ndash;&gt;
+	<!-- HikariCP configuration -->
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
 		  destroy-method="close">
 		<constructor-arg ref="hikariConfig" />
 	</bean>
 
-	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
-		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
-	</bean>
-
-	<bean id="sqlSessionFactory"
-		  class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource"/>
-		<property name="configLocation" value ="classpath:/mybatis-config.xml" />
-		<property name="mapperLocations" value="classpath:/kr.co.chunjae.mapper/*.xml" />
-	</bean>
+	<!--	<bean id="sqlSessionFactory"
+              class="org.mybatis.spring.SqlSessionFactoryBean">
+            <property name="dataSource" ref="dataSource"></property>
+            <property name="configLocation" value ="classpath:/mybatis-config.xml" />
+            <property name="mapperLocations" value="classpath:/mapper/*.xml" />
+        </bean>-->
 
 	<bean id="transactionManager"
 		  class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
 
-	<tx:annotation-driven />-->
+	<tx:annotation-driven />
 
 </beans>
