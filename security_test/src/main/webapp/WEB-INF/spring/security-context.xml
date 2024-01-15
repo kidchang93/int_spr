@@ -5,18 +5,22 @@
        xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <!--<bean id="customaccessDenied" class="org.zerock.security.CustomAccessDeniedHandler" />
-    &lt;!&ndash; <bean id="cusotmLoginSuccess" class="org.zerock.security.CustomLlginSuccessHandler" /> &ndash;&gt;
-    &lt;!&ndash; <bean id="customPasswordEncoder" class="org.zerock.security.CustomNoOpPasswordEncoder" /> &ndash;&gt;
-    <bean id="customUserDetailsService"
-          class="org.zerock.security.CustomUserDetailsService" />
-
-    <bean id="bcryptPasswordEncoder"
-          class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />-->
-
+    <!-- 에러페이지 핸들러 빈 등록 -->
+    <bean id="customAccessDenied" class="kr.co.chunjae.security.CustomAccessDeniedHandler"/>
 
     <security:http auto-config="true" use-expressions="true">
 
+        <security:form-login login-page ="/customLogin" />
+
+        <security:intercept-url pattern="/sample/all" access="permitAll()"/>
+
+        <security:intercept-url pattern="/sample/member" access="hasRole('ROLE_MEMBER')"/>
+        <security:intercept-url pattern="/sample/admin" access="hasRole('ROLE_ADMIN')"/>
+
+        <!-- 에러 발생 시 이동할 페이지 ( 나중에 변경됨 ) -->
+        <!--<security:access-denied-handler error-page ="/accessError"/>-->
+        <!-- 빈으로 등록한 핸들러 -->
+        <security:access-denied-handler ref="customAccessDenied" />
          <!--<security:csrf disabled="true"/>
 
         <security:intercept-url pattern="/student/loginForm"  access="permitAll"/>
@@ -35,6 +39,14 @@
     </security:http>
 
     <security:authentication-manager>
+        <security:authentication-provider>
+            <security:user-service>
+                <security:user name="member" password="{noop}member" authorities="ROLE_MEMBER"/>
+                <security:user name="admin" password="{noop}admin" authorities="ROLE_MEMBER , ROLE_ADMIN"/>
+            </security:user-service>
+        </security:authentication-provider>
+
+
         <!--<security:authentication-provider user-service-ref="customUserDetailsService">
 
 
