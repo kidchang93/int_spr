@@ -1,4 +1,4 @@
-package kr.co.chunjae.controller;
+package kr.co.chunjae.security.controller;
 
 import java.text.DateFormat;
 import java.util.Date;

@@ -6,9 +6,9 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- 에러페이지 핸들러 빈 등록 -->
-    <bean id="customAccessDenied" class="kr.co.chunjae.security.CustomAccessDeniedHandler"/>
-    <bean id="customLoginSuccessHandler" class="kr.co.chunjae.security.CustomLoginSuccessHandler"/>
-    <bean id="customPasswordEncoder" class="kr.co.chunjae.security.CustomNoOpPasswordEncoder"/>
+    <bean id="customAccessDenied" class="kr.co.chunjae.security.security.CustomAccessDeniedHandler"/>
+    <bean id="customLoginSuccessHandler" class="kr.co.chunjae.security.security.CustomLoginSuccessHandler"/>
+    <!--<bean id="customPasswordEncoder" class="kr.co.chunjae.security.security.CustomNoOpPasswordEncoder"/>-->
     <bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
 
     <security:http auto-config="true" use-expressions="true">

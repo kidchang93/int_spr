@@ -1,4 +1,4 @@
-package kr.co.chunjae.controller;
+package kr.co.chunjae.security.controller;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.security.core.Authentication;
