@@ -34,6 +34,9 @@
         <!--지정하지 않으면 customLogout의 form 속성에서 action 값을 다른 값으로 써야한다. (기본값 : logout)-->
         <security:logout logout-url="/customLogout" invalidate-session="true"/>
 
+        <!-- 60 x 60 x 24 x 7 = 604800 : 일주일간 보관 됨-->
+        <security:remember-me data-source-ref="dataSource" token-validity-seconds="604800" />
+
         <security:csrf disabled="true"/>
     </security:http>
     <!--DB 저장할 때 권한이 3개라면 DB에 3개를 다 넣어야함.-->
